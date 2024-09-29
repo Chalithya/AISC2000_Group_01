@@ -6,7 +6,12 @@ import os
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend'))
 app = Flask(__name__, template_folder=template_dir)
 
-model = pickle.load(open('../models/model.pkl', 'rb'))
+models = {
+    "ada_model": pickle.load(open('../models/ada_model.pkl', 'rb')),
+    "xgb_model": pickle.load(open('../models/xgb_model.pkl', 'rb')),
+    "dt_model": pickle.load(open('../models/dt_model.pkl', 'rb')),
+    "rf_model": pickle.load(open('../models/rf_model.pkl', 'rb'))
+}
 
 @app.route('/')
 def index():
@@ -15,6 +20,10 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict_validated():
     try:
+
+        model_selection = request.form.get('model_selection', 'ada_model')
+        model = models[model_selection] 
+
         business_name = request.form.get('business_name', 0)
         business_rating_stars = float(request.form.get('business_rating_stars', 0))
         business_review_count = float(request.form.get('business_review_count', 0))
@@ -29,19 +38,21 @@ def predict_validated():
         BikeParking = int(request.form.get('BikeParking', 0))
         is_open = int(request.form.get('is_open', 0))
 
+        additional_features = np.zeros(14)
+
         features = np.array([[business_rating_stars, business_review_count, total_checkins,
                               BusinessAcceptsCreditCards, BusinessParking_garage,
                               BusinessParking_street, BusinessParking_validated,
                               BusinessParking_lot, BusinessParking_valet,
-                              RestaurantsGoodForGroups, BikeParking, is_open]])
+                              RestaurantsGoodForGroups, BikeParking, is_open] + list(additional_features)])
 
         prediction = model.predict(features)
 
         if prediction[0] == 1:
-            result = f'The {business_name} is validated.'
+            result = f'According to {model_selection} the {business_name} is validated.'
             color = 'green'
         else:
-            result = f'The {business_name} is not validated.'
+            result = f'According to {model_selection} the {business_name} is not validated.'
             color = 'red'
 
     except Exception as e:
