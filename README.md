@@ -4,6 +4,11 @@
 
 This repository contains a machine learning application developed as part of a college assignment to determine whether a business is validated or not, utilizing the Yelp dataset. The project implements various algorithms, including Decision Trees, Random Forests, AdaBoost, and XGBoost, and compares their feature importances using LIME and SHAP.
 
+![image](https://github.com/user-attachments/assets/0a127a61-0ecc-4edc-bd75-9b4529c92c7c)
+To view the live project click on 'Visit Site' button to proceed in the below link
+
+Access the live project(Temporary) : https://9a18-204-101-131-2.ngrok-free.app/
+
 ## Project Overview
 
 In this project, we aim to achieve the following objectives:
