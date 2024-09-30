@@ -14,7 +14,8 @@ In this project, we aim to achieve the following objectives:
   - Random Forest
   - AdaBoost
   - XGBoost
-- **Feature Importance Analysis**: Examine feature importance generated from Decision Trees, Random Forests, and Boosting techniques. Additionally, use LIME and SHAP for comparison.
+- **Feature Importance Analysis**: Examine feature importance generated from Decision Trees, Random Forests, and Boosting techniques.
+- **Model Explainability**: Implement LIME (Local Interpretable Model-agnostic Explanations) and SHAP (SHapley Additive exPlanations) to provide insights into model predictions, ensuring transparency and accountability in decision-making processes.
 - **Empirical Tuning**: Conduct three rounds of empirical tuning on all models to optimize performance.
 
 ## Dataset
