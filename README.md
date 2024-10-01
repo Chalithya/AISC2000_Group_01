@@ -7,7 +7,7 @@ This repository contains a machine learning application developed as part of a c
 ![image](https://github.com/user-attachments/assets/0a127a61-0ecc-4edc-bd75-9b4529c92c7c)
 To view the live project click on 'Visit Site' button to proceed in the below link
 
-Access the live project(Temporary) : https://9a18-204-101-131-2.ngrok-free.app/
+Access the live project(Temporary) :  https://a139-142-198-178-245.ngrok-free.app
 
 ## Project Overview
 
